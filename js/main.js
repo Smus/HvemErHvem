@@ -1,10 +1,24 @@
-/** http://ricostacruz.com/jquery.transit/ **/
-/** https://github.com/rstacruz/jquery.transit#readme **/
 var totalPoints = 0;
 var randomNumber = 0;
 var cardArray = [];
 var realtime = 60000;
 
+// Sets json into a variable
+var employees = (function() {
+  var employees = null;
+  $.ajax({
+    'async': false,
+    'global': false,
+    'url': 'json/employees.json',
+    'dataType': "json",
+    'success': function(data) {
+      employees = data;
+    }
+  });
+  return employees;
+})();
+
+// Removes all click event
 $(document).ready(function() {
   $('#sek').html(realtime / 1000);
   $('#name0').unbind("click");
@@ -12,9 +26,9 @@ $(document).ready(function() {
   $('#name2').unbind("click");
   $('#name3').unbind("click");
   newGame();
-
 });
 
+// default
 function nulstil() {
   totalPoints = 0;
   $('.pValue').html(totalPoints);
@@ -24,6 +38,7 @@ function nulstil() {
   randomNumber = 0;
 }
 
+// NewGame / reset
 function newGame() {
   var RandomNumber = getRandom(0, 3);
   picknames(RandomNumber, 1, employees); // vælger nye kort
@@ -71,20 +86,7 @@ function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Sets json into a variable
-var employees = (function() {
-  var employees = null;
-  $.ajax({
-    'async': false,
-    'global': false,
-    'url': 'json/employees.json',
-    'dataType': "json",
-    'success': function(data) {
-      employees = data;
-    }
-  });
-  return employees;
-})();
+
 
 //Get new cards
 function picknames(number, gametype, jd) {
@@ -105,7 +107,7 @@ function picknames(number, gametype, jd) {
   } else {};
 
   cardArray = shuffleArray(picks); //byt rundt på rækkefølgende
-  cardArray.length = 4; // get 4 random elements
+  cardArray.length = 4; // find de 4 første elementer i arrayet
 
   $('#image img').attr('src', 'crawl/' + cardArray[number].Image);
   for (var i = 0; i < cardArray.length; i++) {
@@ -194,7 +196,7 @@ function postdata(name, answer) {
       answer: answer
     },
     success: function(data) {
-      console.log("respons: " + data);
+      console.log("Svar: " + data);
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(textStatus, errorThrown);

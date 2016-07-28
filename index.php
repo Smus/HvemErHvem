@@ -7,7 +7,6 @@
   <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
       <title>Quiz</title>
-      <link href="http://hjaltelinstahl.com/templates/lauritzz/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
       <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   </head>
@@ -48,7 +47,7 @@
           <div class="buttons statistik">Se statistik</div>
       </div>
       <script src="lib/jquery-2.1.4.min.js" type="text/javascript"></script>
-      <script src="lib/jquery.transit.min.js" type="text/javascript"></script>
+      <!--<script src="lib/jquery.transit.min.js" type="text/javascript"></script>-->
       <script src="js/main.js" type="text/javascript"></script>
   </body>
 </html>
